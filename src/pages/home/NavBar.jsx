@@ -22,7 +22,7 @@ export const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav justify-content-center w-100">
             <a className="nav-link active" aria-current="page" href="#">
-              s<Link to="/">Home</Link>
+              <Link to="/">Home</Link>
             </a>
             <a className="nav-link" href="#">
               <Link to="/products">Products</Link>
