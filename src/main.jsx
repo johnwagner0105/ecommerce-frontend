@@ -6,6 +6,11 @@ import { Home } from "./pages/home/Home";
 import { Products } from "./pages/Products/Products";
 import { Layout } from "./pages/home/Layout";
 import { Login } from "./pages/Login/Login";
+import { CreateProduct } from "./pages/Products/CreateProduct";
+import { ProductDetail } from "./pages/Products/ProductDetail";
+import { Cart } from "./pages/Products/Cart";
+import { CreateUser } from "./pages/users/CreateUser";
+// import { AuthProvider } from "./context/AuthContext";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +23,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <h1>Cart</h1>,
+        element: <Cart />,
       },
       {
         path: "/protected",
@@ -31,6 +36,18 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "createproduct",
+        element: <CreateProduct />,
+      },
+      {
+        path: "viewproduct/:id",
+        element: <ProductDetail />,
+      },
+      {
+        path: "createuser",
+        element: <CreateUser />,
       },
     ],
   },

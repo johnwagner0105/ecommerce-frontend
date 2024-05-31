@@ -8,28 +8,30 @@ export const Products = () => {
   useEffect(() => {
     getProductServices().then((data) => {
       if (!data) {
-        alert("Ha ocurrido un error");
+        alert("Ha ocurrido un error al cargar los productos");
         return;
       }
       setProducts(data);
-      // console.log(data);
     });
   }, []);
+
   return (
-    <div>
-      <h1>Products</h1>
-      <div className="container">
-        <div className="row">
-          {products.length > 0 ? (
-            products.map((product) => (
-              <div key={product.id} className="col-md-4 mb-4">
-                <ProductCard data={product} />
+    <div className="container">
+      <h1 className="mt-4 mb-3">Products</h1>
+      <div className="row">
+        {products.length > 0 ? (
+          products
+            .filter((product) => product.status)
+            .map((filteredProduct) => (
+              <div key={filteredProduct.id} className="col-md-4 mb-4">
+                <ProductCard data={filteredProduct} />
               </div>
             ))
-          ) : (
-            <p>No hay productos</p>
-          )}
-        </div>
+        ) : (
+          <div className="col">
+            <p className="text-center">No hay productos disponibles</p>
+          </div>
+        )}
       </div>
     </div>
   );

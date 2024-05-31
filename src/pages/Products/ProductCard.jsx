@@ -1,12 +1,18 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const ProductCard = ({ data }) => {
   return (
     <div className="card h-100">
-      <img src={data.image} className="card-img-top" />
+      <Link to={`/viewproduct/${data.id}`}>
+        <img src={data.image} className="card-img-top" alt={data.name} />
+      </Link>
       <div className="card-body">
-        <div className="card-title">{data.name}</div>
-        <div className="card-text">{data.price}</div>
+        <h5 className="card-title">{data.name}</h5>
+        <p className="card-text">${data.price}</p>
+        <Link to={`/viewproduct/${data.id}`} className="btn btn-primary">
+          Ver Detalles
+        </Link>
       </div>
     </div>
   );

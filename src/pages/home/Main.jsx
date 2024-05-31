@@ -7,12 +7,14 @@ import twitterSVG from "../../assets/Vector4.svg";
 
 export const Main = () => {
   return (
-    <div class="container mt-4">
-      <div class="row">
-        <div class="col-md-6">
-          <h2 className="display-3">Buscando adornos para casa?</h2>
-          <h3 className="display-5">
-            No lo busques más que en SMTM lo tenemos todo para ti!
+    <div className="container mt-4">
+      <div className="row">
+        <div className="col-md-6">
+          <h2 className="display-3 fw-bold mb-4">
+            ¿Buscando adornos para casa?
+          </h2>
+          <h3 className="display-5 mb-4">
+            No lo busques más, ¡en SMTM lo tenemos todo para ti!
           </h3>
           <div className="d-flex gap-3">
             <img src={googleSVG} alt="Google Icon" />
@@ -21,8 +23,12 @@ export const Main = () => {
             <img src={twitterSVG} alt="Twitter Icon" />
           </div>
         </div>
-        <div class="col-md-6 d-flex justify-content-center align-items-center">
-          <img src={myImage} class="img-fluid" alt="Descripción de la imagen" />
+        <div className="col-md-6 d-flex justify-content-center align-items-center">
+          <img
+            src={myImage}
+            className="img-fluid"
+            alt="Descripción de la imagen"
+          />
         </div>
       </div>
     </div>
