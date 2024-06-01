@@ -2,17 +2,20 @@ import { jwtDecode } from "jwt-decode";
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { isAdmin } from "../../services/user_services";
 
 export const NavBar = () => {
   const navigate = useNavigate();
+
   const handleRemoveItem = () => {
     localStorage.removeItem("accessToken");
-    alert("Se ha cerrado sesion");
+    alert("Se ha cerrado sesión");
     navigate("/");
     window.location.reload();
   };
 
   const [userState, setUserState] = useState(null);
+
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
     if (token) {
@@ -64,10 +67,15 @@ export const NavBar = () => {
           <div className="d-flex align-items-center">
             {userState ? (
               <>
-                <p className="me-3">Hola, {userState.name}</p>
+                <p className="me-3 mb-0">Hola, {userState.name}</p>
+                {isAdmin() && (
+                  <Link to="/createproduct" className="btn btn-success me-3">
+                    Agregar Usuario
+                  </Link>
+                )}
                 <button
                   type="button"
-                  className="btn btn-outline-danger me-3"
+                  className="btn btn-outline-danger"
                   onClick={handleRemoveItem}
                 >
                   Log out
@@ -81,7 +89,7 @@ export const NavBar = () => {
                   </button>
                 </Link>
                 <Link to="/createuser">
-                  <button type="button" className="btn btn-primary">
+                  <button type="button" className="btn btn-secondary">
                     Signup
                   </button>
                 </Link>

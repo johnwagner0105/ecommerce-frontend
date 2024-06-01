@@ -3,7 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTimes } from "@fortawesome/free-solid-svg-icons";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { retrieveProductServices } from "../../services/product_services";
+import {
+  deleteProductServices,
+  retrieveProductServices,
+} from "../../services/product_services";
 import { isAdmin } from "../../services/user_services";
 
 export const ProductDetail = () => {
@@ -61,7 +64,20 @@ export const ProductDetail = () => {
     }
   };
 
-  const handleDeleteProduct = () => {};
+  const handleDeleteProduct = async (id) => {
+    const confirmDelete = window.confirm(
+      "¿Estás seguro de que deseas eliminar este producto?"
+    );
+    if (confirmDelete) {
+      const result = await deleteProductServices(id);
+      if (result) {
+        alert("Producto eliminado con éxito");
+        window.location.href = "/products";
+      } else {
+        alert("Error al eliminar el producto");
+      }
+    }
+  };
 
   return (
     <div className="container my-4">
@@ -76,10 +92,10 @@ export const ProductDetail = () => {
                 </span>
               )}
               {isAdmin() && (
-                <span className="ms-2">
+                <span className="ms-2 cursor-pointer">
                   <FontAwesomeIcon
                     icon={faTimes}
-                    onClick={handleDeleteProduct}
+                    onClick={() => handleDeleteProduct(product.id)}
                   />
                 </span>
               )}

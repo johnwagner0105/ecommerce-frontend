@@ -66,3 +66,21 @@ export const createSaleServices = async (formData) => {
     throw error;
   }
 };
+
+export const deleteProductServices = async (id) => {
+  try {
+    const response = await fetch(`${API_URL}gestion/borrarproducto/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (!response.ok) {
+      throw new Error("Error al eliminar el producto");
+    }
+    return response.json();
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};

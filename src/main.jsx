@@ -10,7 +10,6 @@ import { CreateProduct } from "./pages/Products/CreateProduct";
 import { ProductDetail } from "./pages/Products/ProductDetail";
 import { Cart } from "./pages/Products/Cart";
 import { CreateUser } from "./pages/users/CreateUser";
-// import { AuthProvider } from "./context/AuthContext";
 
 const router = createBrowserRouter([
   {
